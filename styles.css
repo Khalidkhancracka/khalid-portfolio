@@ -1,0 +1,856 @@
+/* ==========================================================================
+   TABLE OF CONTENTS
+   1. Reset / base
+   2. Design tokens
+   3. Layout helpers + buttons
+   4. Header
+   5. Hero (photo, name, dotted section-index nav, scroll cue, socials)
+   6. Shared section components
+   7. About
+   8. Projects
+   9. Tech stack (expand/collapse)
+   10. Contact (info list + form)
+   11. Footer
+   12. Scroll-reveal animation
+   13. Responsive: tablet & desktop
+   ========================================================================== */
+
+/* ---------- 1. Reset / base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden; /* guards against any edge-case horizontal overflow on small screens */
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- 2. Design tokens ---------- */
+:root {
+  /* Colors */
+  --color-bg: #07070a;
+  --color-bg-alt: #0c0c11;
+  --color-surface: #111117;
+  --color-border: #212129;
+  --color-text: #eef0f4;
+  --color-text-muted: #9498a6;
+  --color-accent: #3ea6ff;
+  --color-accent-rgb: 62, 166, 255;
+  --color-accent-soft: rgba(62, 166, 255, 0.12);
+
+  /* Type */
+  --font-display: "Space Grotesk", "IBM Plex Sans", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+
+  /* Layout */
+  --max-width: 1180px;
+  --gutter: 1.5rem;
+  --header-height: 68px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-accent);
+  color: #04141f;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  z-index: 200;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ---------- 3. Layout helpers + buttons ---------- */
+.section-inner,
+.header-inner {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: #04141f;
+}
+
+.btn--primary:hover {
+  box-shadow: 0 0 24px rgba(var(--color-accent-rgb), 0.35);
+  transform: translateY(-1px);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn--outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+/* ---------- 4. Header ---------- */
+/* Logo only — the dotted section-index in the hero is the sole in-page nav,
+   so there is no separate nav bar / hamburger menu here. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  background: rgba(7, 7, 10, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+}
+
+.logo-accent {
+  color: var(--color-accent);
+}
+
+/* ---------- 5. Hero ---------- */
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+  padding-block: 3rem 4rem;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  min-width: 0; /* allows text/flex children to shrink instead of overflowing */
+}
+
+.hero-greeting {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  font-size: clamp(2.4rem, 9vw, 4.4rem);
+  letter-spacing: -0.01em;
+}
+
+.hero-name-first {
+  display: block;
+  color: var(--color-text);
+}
+
+.hero-name-last {
+  display: block;
+  color: var(--color-accent);
+}
+
+.hero-role {
+  margin-top: 0.75rem;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.hero-media {
+  order: -1;
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 380px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.hero-photo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+}
+
+/* Section index — doubles as the site's only navigation */
+.section-index {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  max-width: 420px;
+}
+
+.section-index-link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+.section-index-link:hover,
+.section-index-link.is-active {
+  color: var(--color-accent);
+}
+
+.index-leader {
+  flex: 1 1 auto;
+  border-bottom: 2px dotted var(--color-border);
+  height: 0;
+  transform: translateY(-4px);
+  min-width: 1.25rem;
+}
+
+.index-number {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.section-index-link.is-active .index-number {
+  color: var(--color-accent);
+}
+
+.scroll-cue {
+  display: none; /* shown from the tablet breakpoint up, see media query */
+}
+
+.social-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.social-row a {
+  display: inline-flex;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-row a:hover {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.social-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--color-border);
+}
+
+/* ---------- 6. Shared section components ---------- */
+.section {
+  padding: 4.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section--alt {
+  background: var(--color-bg-alt);
+}
+
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 0.4rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  margin-bottom: 2.25rem;
+}
+
+/* ---------- 7. About ---------- */
+.about-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.about-copy p {
+  color: var(--color-text-muted);
+  max-width: 65ch;
+  margin-bottom: 1rem;
+}
+
+.about-copy strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.about-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.about-facts {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.75rem;
+}
+
+.about-facts-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.fact-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.92rem;
+}
+
+.fact-row:last-child {
+  border-bottom: none;
+}
+
+.fact-row dt {
+  color: var(--color-text-muted);
+}
+
+.fact-row dd {
+  font-weight: 600;
+  text-align: right;
+}
+
+.about-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.about-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+.about-link:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- 8. Projects ---------- */
+.project-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.75rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.project-card:hover {
+  border-color: rgba(var(--color-accent-rgb), 0.4);
+  box-shadow: 0 0 28px rgba(var(--color-accent-rgb), 0.08);
+  transform: translateY(-3px);
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
+}
+
+.project-desc {
+  color: var(--color-text-muted);
+  font-size: 0.94rem;
+  margin-bottom: 1.1rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.35rem;
+}
+
+.project-tags li {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.project-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  border-bottom: 1px solid rgba(var(--color-accent-rgb), 0.4);
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.project-link:hover {
+  opacity: 0.75;
+}
+
+.projects-note {
+  margin-top: 2.25rem;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.projects-note a {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ---------- 9. Tech stack (expand/collapse) ---------- */
+.skills-hint {
+  color: var(--color-text-muted);
+  font-size: 0.94rem;
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+}
+
+.skills-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.skill-category {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.skill-category:has(.skill-btn[aria-expanded="true"]) {
+  border-color: rgba(var(--color-accent-rgb), 0.45);
+  box-shadow: 0 0 22px rgba(var(--color-accent-rgb), 0.1);
+}
+
+.skill-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.5rem;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: left;
+}
+
+/* Chevron indicator rotates on expand — pure CSS, driven by aria-expanded */
+.skill-btn::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--color-text-muted);
+  border-bottom: 2px solid var(--color-text-muted);
+  transform: rotate(45deg);
+  transition: transform 0.25s var(--ease), border-color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.skill-btn[aria-expanded="true"]::after {
+  transform: rotate(-135deg);
+  border-color: var(--color-accent);
+}
+
+.skill-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s var(--ease);
+}
+
+.skill-panel.is-open {
+  max-height: 300px;
+}
+
+.skill-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0 1.5rem 1.35rem;
+}
+
+.skill-chip-list li {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+}
+
+/* ---------- 10. Contact (info list + form) ---------- */
+.contact-intro {
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin-bottom: 2.5rem;
+}
+
+.contact-layout {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-item:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.contact-item-icon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.contact-item-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.contact-item-value {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  word-break: break-word;
+}
+
+.contact-form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.form-field input,
+.form-field textarea {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  width: 100%;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--color-accent);
+}
+
+.form-submit {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+.form-status {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  min-height: 1.2em;
+}
+
+.form-status.is-success {
+  color: var(--color-accent);
+}
+
+/* ---------- 11. Footer ---------- */
+.site-footer {
+  padding: 2rem var(--gutter) 3rem;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.back-to-top {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.back-to-top:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- 12. Scroll-reveal animation ---------- */
+/* Subtle, single-use fade/slide reveal — kept minimal per the design brief */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bouncing scroll-down cue — a single, subtle, purely decorative motion */
+.scroll-cue-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  color: var(--color-accent);
+  animation: bounce 2.2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ---------- 13. Responsive: tablet & desktop ---------- */
+@media (min-width: 640px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 860px) {
+  :root {
+    --gutter: 2.5rem;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: calc(100vh - var(--header-height));
+  }
+
+  .hero-media {
+    order: 2;
+    max-width: none;
+    justify-self: end;
+  }
+
+  .hero-photo {
+    max-height: 76vh;
+  }
+
+  .scroll-cue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    position: absolute;
+    left: 50%;
+    bottom: 6rem;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .social-row {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    z-index: 3;
+    margin-top: 0;
+  }
+
+  .about-grid {
+    grid-template-columns: 1.5fr 1fr;
+    align-items: start;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr 1.2fr;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1100px) {
+  .hero-name {
+    font-size: clamp(3rem, 6vw, 5rem);
+  }
+}
+
+/* Small-phone safety net: keep long email/phone values from forcing
+   horizontal scroll on very narrow screens */
+@media (max-width: 380px) {
+  .contact-item-value {
+    font-size: 0.88rem;
+  }
+}

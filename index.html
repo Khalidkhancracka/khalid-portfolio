@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khalid Khan | Computer Science Student &amp; Software Developer</title>
+  <meta
+    name="description"
+    content="Portfolio of Khalid Khan, a Computer Science student building web and backend software while working toward a career in Data Science, AI, and Machine Learning."
+  />
+
+  <!-- Space Grotesk for display/headings, IBM Plex Sans for body copy -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Skip link for keyboard/screen-reader users -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <!-- Logo only — the dotted section index inside the hero is the site's
+       single in-page navigation, so there's no separate nav bar here. -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a href="#top" class="logo" aria-label="Khalid Khan, home">
+        <span>K</span><span class="logo-accent">K</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============ HERO / OVERVIEW ============ -->
+    <section class="hero" id="overview" aria-label="Introduction">
+      <div class="section-inner hero-inner">
+
+        <div class="hero-content">
+          <p class="hero-greeting">Hello, I'm</p>
+          <h1 class="hero-name">
+            <span class="hero-name-first">Khalid</span>
+            <span class="hero-name-last">Khan</span>
+          </h1>
+          <p class="hero-role">Computer Science Student &amp; Software Developer</p>
+
+          <!-- Section index — this is the site's only navigation -->
+          <ol class="section-index" aria-label="Page sections">
+            <li>
+              <a href="#about" class="section-index-link">
+                <span>About</span>
+                <span class="index-leader" aria-hidden="true"></span>
+                <span class="index-number">I</span>
+              </a>
+            </li>
+            <li>
+              <a href="#projects" class="section-index-link">
+                <span>Projects</span>
+                <span class="index-leader" aria-hidden="true"></span>
+                <span class="index-number">II</span>
+              </a>
+            </li>
+            <li>
+              <a href="#tech-stack" class="section-index-link">
+                <span>Tech Stack</span>
+                <span class="index-leader" aria-hidden="true"></span>
+                <span class="index-number">III</span>
+              </a>
+            </li>
+            <li>
+              <a href="#contact" class="section-index-link">
+                <span>Contacts</span>
+                <span class="index-leader" aria-hidden="true"></span>
+                <span class="index-number">IV</span>
+              </a>
+            </li>
+          </ol>
+        </div>
+
+        <div class="hero-media">
+          <!-- Replace src with your own photo (same folder as index.html works fine,
+               e.g. src="khalid.jpg"). Keep the alt text descriptive. -->
+          <img
+            src="khalid.jpg"
+            alt="Placeholder photo of Khalid Khan — replace with your own profile photo"
+            class="hero-photo"
+            width="900"
+            height="1100"
+          />
+        </div>
+
+        <a href="#about" class="scroll-cue" aria-label="Scroll down to About section">
+          <span class="scroll-cue-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="scroll-cue-label">Scroll down</span>
+        </a>
+
+        <ul class="social-row" aria-label="Social and contact links">
+          <li>
+            <a href="https://www.linkedin.com/in/khalid-khan-0716622a5/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            </a>
+          </li>
+          <li aria-hidden="true" class="social-divider"></li>
+          <li>
+            <a href="https://github.com/Khalidkhancracka" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18A11 11 0 0 1 12 5.8c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.6.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.2.67.8.56A10.99 10.99 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+            </a>
+          </li>
+          <li aria-hidden="true" class="social-divider"></li>
+          <li>
+            <a href="mailto:khalidkhan03459799620@gmail.com" aria-label="Send an email">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6.5l9 6.5 9-6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about" aria-label="About">
+      <div class="section-inner">
+        <p class="section-eyebrow">I</p>
+        <h2 class="section-title">About</h2>
+
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p>
+              I am a Computer Science student with a strong foundation in web development,
+              backend engineering, and software development. I have hands-on experience across
+              both frontend and backend technologies — from <strong>HTML, CSS, JavaScript, and
+              React</strong> to <strong>Python, FastAPI, Node.js, and Express.js</strong> — along
+              with API development, MySQL, and relational databases. I enjoy building practical
+              projects that let me apply what I learn and continually sharpen my problem-solving
+              skills.
+            </p>
+            <p>
+              I've also started building and training machine learning models — early, hands-on
+              exposure to data preparation, model training, and evaluation. My long-term goal is
+              to build a career in <strong>Data Science</strong>, and I'm actively expanding my
+              knowledge of <strong>Artificial Intelligence and Machine Learning</strong> along the
+              way.
+            </p>
+
+            <div class="about-cta">
+              <a href="#projects" class="btn btn--primary">View My Projects</a>
+              <a href="resume.pdf" class="btn btn--outline" download>Download Resume</a>
+            </div>
+          </div>
+
+          <aside class="about-facts reveal" aria-label="Quick facts">
+            <h3 class="about-facts-title">Quick facts</h3>
+            <dl class="fact-list">
+              <div class="fact-row">
+                <dt>Currently</dt>
+                <dd>Computer Science Student</dd>
+              </div>
+              <div class="fact-row">
+                <dt>Core focus</dt>
+                <dd>Web &amp; Backend Development</dd>
+              </div>
+              <div class="fact-row">
+                <dt>Career goal</dt>
+                <dd>Data Science</dd>
+              </div>
+              <div class="fact-row">
+                <dt>Growing into</dt>
+                <dd>AI &amp; Machine Learning</dd>
+              </div>
+            </dl>
+
+            <div class="about-links">
+              <a href="https://github.com/Khalidkhancracka" target="_blank" rel="noopener noreferrer" class="about-link">GitHub &rarr;</a>
+              <a href="https://www.linkedin.com/in/khalid-khan-0716622a5/" target="_blank" rel="noopener noreferrer" class="about-link">LinkedIn &rarr;</a>
+              <a href="mailto:khalidkhan03459799620@gmail.com" class="about-link">Email &rarr;</a>
+              <a href="resume.pdf" class="about-link" download>Resume &rarr;</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section section--alt" id="projects" aria-label="Projects">
+      <div class="section-inner">
+        <p class="section-eyebrow">II</p>
+        <h2 class="section-title">Projects</h2>
+
+        <div class="project-grid">
+
+          <article class="project-card reveal">
+            <div class="project-body">
+              <h3 class="project-title">Attendance Management System</h3>
+              <p class="project-desc">
+                A system designed to manage and organize student attendance efficiently,
+                covering data entry, storage, and retrieval in a structured, reliable way.
+              </p>
+              <ul class="project-tags">
+                <li>Application Development</li>
+                <li>Backend Logic</li>
+                <li>Database Management</li>
+              </ul>
+              <div class="project-links">
+                <!-- Placeholder link — replace with the live project or repo URL -->
+                <a href="#" class="project-link">View Project</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-body">
+              <h3 class="project-title">Hostel Management System</h3>
+              <p class="project-desc">
+                A web-based system for managing hostel-related information and day-to-day
+                operations, built with a focus on clear data organization.
+              </p>
+              <ul class="project-tags">
+                <li>Backend Development</li>
+                <li>Database Design</li>
+                <li>Web Application</li>
+              </ul>
+              <div class="project-links">
+                <a href="#" class="project-link">View Project</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-body">
+              <h3 class="project-title">Blog Website</h3>
+              <p class="project-desc">
+                A dynamic blog platform for creating, managing, and displaying posts, combining
+                a clean frontend with backend logic to handle content.
+              </p>
+              <ul class="project-tags">
+                <li>Frontend Development</li>
+                <li>Backend Functionality</li>
+                <li>Web Application</li>
+              </ul>
+              <div class="project-links">
+                <a href="#" class="project-link">View Project</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-body">
+              <h3 class="project-title">Personal Portfolio Website</h3>
+              <p class="project-desc">
+                This site — designed and built to showcase my skills, projects, and background,
+                and to give recruiters and collaborators a clear picture of my work.
+              </p>
+              <ul class="project-tags">
+                <li>HTML &amp; CSS</li>
+                <li>JavaScript</li>
+                <li>Responsive Design</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://github.com/Khalidkhancracka" target="_blank" rel="noopener noreferrer" class="project-link">GitHub Profile</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-body">
+              <h3 class="project-title">Machine Learning Projects</h3>
+              <p class="project-desc">
+                Early, practical work building and training machine learning models — hands-on
+                exposure to preparing data, training models, and evaluating results using Python.
+              </p>
+              <ul class="project-tags">
+                <li>Data Preparation</li>
+                <li>Model Training</li>
+                <li>Model Evaluation</li>
+              </ul>
+              <div class="project-links">
+                <a href="#" class="project-link">View Project</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="projects-note">
+          More projects and repository links are added regularly —
+          <a href="https://github.com/Khalidkhancracka" target="_blank" rel="noopener noreferrer">explore my GitHub</a>
+          for ongoing work.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ TECH STACK ============ -->
+    <section class="section" id="tech-stack" aria-label="Tech Stack">
+      <div class="section-inner">
+        <p class="section-eyebrow">III</p>
+        <h2 class="section-title">Tech Stack</h2>
+        <p class="skills-hint">Select a category to see the related technologies.</p>
+
+        <div class="skills-grid" id="skillsGrid">
+          <div class="skill-category">
+            <button class="skill-btn" type="button" aria-expanded="false" aria-controls="panel-languages">
+              Programming Languages
+            </button>
+            <div class="skill-panel" id="panel-languages">
+              <ul class="skill-chip-list">
+                <li>C++</li>
+                <li>Python</li>
+                <li>JavaScript</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <button class="skill-btn" type="button" aria-expanded="false" aria-controls="panel-frontend">
+              Frontend
+            </button>
+            <div class="skill-panel" id="panel-frontend">
+              <ul class="skill-chip-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>React</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <button class="skill-btn" type="button" aria-expanded="false" aria-controls="panel-backend">
+              Backend
+            </button>
+            <div class="skill-panel" id="panel-backend">
+              <ul class="skill-chip-list">
+                <li>Python</li>
+                <li>FastAPI</li>
+                <li>Node.js</li>
+                <li>Express.js</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <button class="skill-btn" type="button" aria-expanded="false" aria-controls="panel-api">
+              API Design
+            </button>
+            <div class="skill-panel" id="panel-api">
+              <ul class="skill-chip-list">
+                <li>REST API Development</li>
+                <li>FastAPI</li>
+                <li>Express.js</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <button class="skill-btn" type="button" aria-expanded="false" aria-controls="panel-databases">
+              Databases
+            </button>
+            <div class="skill-panel" id="panel-databases">
+              <ul class="skill-chip-list">
+                <li>MySQL</li>
+                <li>Relational Databases</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <button class="skill-btn" type="button" aria-expanded="false" aria-controls="panel-ml">
+              Machine Learning
+            </button>
+            <div class="skill-panel" id="panel-ml">
+              <ul class="skill-chip-list">
+                <li>Python</li>
+                <li>Machine Learning</li>
+                <li>Model Training</li>
+                <li>Data Preparation</li>
+                <li>Model Evaluation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--alt" id="contact" aria-label="Contacts">
+      <div class="section-inner">
+        <p class="section-eyebrow">IV</p>
+        <h2 class="section-title">Contacts</h2>
+        <p class="contact-intro">
+          I'm open to collaboration, project work, internships, and professional opportunities.
+          Reach out through any of the channels below, or send a message directly.
+        </p>
+
+        <div class="contact-layout">
+          <ul class="contact-list">
+            <li>
+              <a href="mailto:khalidkhan03459799620@gmail.com" class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6.5l9 6.5 9-6.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span>
+                  <span class="contact-item-label">Email</span>
+                  <span class="contact-item-value">khalidkhan03459799620@gmail.com</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+923459799620" class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span>
+                  <span class="contact-item-label">Phone</span>
+                  <span class="contact-item-value">0345 9799620</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+923295181768" class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span>
+                  <span class="contact-item-label">Phone (alt.)</span>
+                  <span class="contact-item-value">0329 5181768</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Khalidkhancracka" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18A11 11 0 0 1 12 5.8c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.6.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.2.67.8.56A10.99 10.99 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+                </span>
+                <span>
+                  <span class="contact-item-label">GitHub</span>
+                  <span class="contact-item-value">Khalidkhancracka</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/khalid-khan-0716622a5/" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+                </span>
+                <span>
+                  <span class="contact-item-label">LinkedIn</span>
+                  <span class="contact-item-value">khalid-khan-0716622a5</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="resume.pdf" class="contact-item" download>
+                <span class="contact-item-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12m0 0l-4-4m4 4l4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span>
+                  <span class="contact-item-label">Resume</span>
+                  <span class="contact-item-value">Download PDF</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary form-submit">Send Message</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="currentYear"></span> Khalid Khan. All rights reserved.</p>
+    <a href="#top" class="back-to-top">Back to top</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
