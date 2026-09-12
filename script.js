@@ -4,7 +4,7 @@
  * 1. Mobile nav toggle
  * 2. Active section-index link highlighting while scrolling
  * 3. Skills stack expand/collapse (accessible, one or many open)
- * 4. Contact form — frontend-only handling, no backend wired up yet
+ * 4. Contact form — sends messages to your email via EmailJS
  * 5. Scroll-into-view reveal animation (single fade-in, not repeated)
  * 6. Footer year auto-fill
  * ------------------------------------------------------------------
@@ -69,15 +69,23 @@ function initSkillsToggle() {
 }
 
 /**
- * Handles the contact form submission on the frontend only. No email
- * service is connected yet, so this validates input and shows a status
- * message rather than pretending the message was actually sent.
+ * Handles the contact form submission using EmailJS, sending messages
+ * directly to your inbox. Replace the placeholders below with your own
+ * EmailJS Public Key, Service ID, and Template ID.
  */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
 
   if (!form || !status) return;
+
+  // --- Replace these with your actual EmailJS credentials ---
+  const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+  const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+  // ------------------------------------------------------------
+
+  emailjs.init(EMAILJS_PUBLIC_KEY);
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -88,13 +96,20 @@ function initContactForm() {
       return;
     }
 
-    // NOTE: There is no backend/email service connected yet. Wire this up
-    // to a service (e.g. Formspree, EmailJS, or a custom API endpoint)
-    // before relying on this form to actually deliver messages.
-    status.textContent =
-      'Thanks! This form isn\u2019t connected to an email service yet — please reach out directly via email in the meantime.';
-    status.classList.add('is-success');
-    form.reset();
+    status.textContent = 'Sending your message...';
+    status.classList.remove('is-success');
+
+    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
+      .then(() => {
+        status.textContent = 'Thanks! Your message has been sent — I\u2019ll get back to you soon.';
+        status.classList.add('is-success');
+        form.reset();
+      })
+      .catch((error) => {
+        console.error('EmailJS error:', error);
+        status.textContent = 'Something went wrong sending your message. Please try again or email me directly.';
+        status.classList.remove('is-success');
+      });
   });
 }
 
